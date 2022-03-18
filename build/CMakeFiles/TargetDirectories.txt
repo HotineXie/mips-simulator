@@ -1,0 +1,3 @@
+/home/hotine/work/mips-simulator/build/CMakeFiles/edit_cache.dir
+/home/hotine/work/mips-simulator/build/CMakeFiles/rebuild_cache.dir
+/home/hotine/work/mips-simulator/build/CMakeFiles/mips-simulator.dir

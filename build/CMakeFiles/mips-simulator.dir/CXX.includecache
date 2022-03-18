@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/memory.h
+iostream
+-
+
+../include/scanner.h
+vector
+-
+fstream
+-
+string
+-
+map
+-
+
+../include/simulator.h
+
+/home/hotine/work/mips-simulator/src/main.cc
+scanner.h
+/home/hotine/work/mips-simulator/src/scanner.h
+simulator.h
+/home/hotine/work/mips-simulator/src/simulator.h
+memory.h
+/home/hotine/work/mips-simulator/src/memory.h
+iostream
+-
+fstream
+-
+

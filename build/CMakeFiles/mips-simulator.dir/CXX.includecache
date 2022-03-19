@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-../include/memory.h
-iostream
--
-
 ../include/scanner.h
 vector
 -
@@ -20,17 +16,9 @@ string
 map
 -
 
-../include/simulator.h
-
-/home/hotine/work/mips-simulator/src/main.cc
-scanner.h
-/home/hotine/work/mips-simulator/src/scanner.h
-simulator.h
-/home/hotine/work/mips-simulator/src/simulator.h
-memory.h
-/home/hotine/work/mips-simulator/src/memory.h
+/home/hotine/work/mips-simulator/src/scanner.cc
 iostream
 -
-fstream
--
+scanner.h
+/home/hotine/work/mips-simulator/src/scanner.h
 

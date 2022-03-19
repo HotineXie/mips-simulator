@@ -3,18 +3,16 @@
 #include <string>
 #include <map>
 
-// struct Memory {
-//   void *mem_ptr = (void *)malloc(0x600000);
-//   void *static_data_ptr = (void *)((int *)mem_ptr + 0x100000);
-// };
-
-// Memory Mem;
-
 class Scanner {
  public:
-  void read_asm_code();
-  void read_bin_code();
+  std::vector<std::string> asmCodes;
+  std::vector<std::string> binCodes;
+
+  void traverse_asm_codes();
+
+  void traverse_bin_codes();
+  void write_bin_to_mem(std::string binCode);
+  int binstr_to_int(std::string binStr);
 
  private:
-
 };

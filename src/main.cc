@@ -6,6 +6,7 @@
 #include <fstream>
 
 extern void *mem_ptr;
+extern void *text_ptr;
 extern void *static_data_ptr;
 
 int main(int argc, char** argv) {
@@ -21,7 +22,17 @@ int main(int argc, char** argv) {
   std::ifstream ioIn(ioInFilePath);
   std::ofstream ioOut(ioOutFilePath, std::ios::trunc);
 
-  *(char *)static_data_ptr = '\n';
+  std::string currentLine;
+  Scanner MipsScanner;
+
+  while (getline(asmCode, currentLine)) {
+    MipsScanner.asmCodes.push_back(currentLine);
+  }
+  while (getline(binCode, currentLine)) {
+    MipsScanner.binCodes.push_back(currentLine);
+  }
+  MipsScanner.traverse_bin_codes();
+
 
   // test dump
   FILE *fp = fopen("dump", "wb");

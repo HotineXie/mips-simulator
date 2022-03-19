@@ -32,14 +32,14 @@ int main(int argc, char** argv) {
     MipsScanner.binCodes.push_back(currentLine);
   }
   MipsScanner.traverse_bin_codes();
-
+  MipsScanner.traverse_asm_codes();
 
   // test dump
   FILE *fp = fopen("dump", "wb");
   fwrite(mem_ptr, 1, 0x600000, fp);
   fclose(fp);
-  std::cout << mem_ptr << std::endl;
-  std::cout << static_data_ptr << std::endl;
-  std::cout << *(int *)static_data_ptr << std::endl; 
+  // std::cout << mem_ptr << std::endl;
+  // std::cout << static_data_ptr << std::endl;
+  // std::cout << *(int *)static_data_ptr << std::endl; 
   return 0;
 }

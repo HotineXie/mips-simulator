@@ -5,6 +5,7 @@
 extern void *mem_ptr;
 extern void *text_ptr;
 extern void *static_data_ptr;
+extern void *data_ptr;
 
 void Scanner::traverse_bin_codes() {
   for (int i=0;i<binCodes.size();i++) {
@@ -34,7 +35,6 @@ void Scanner::traverse_asm_codes() {
   std::vector<std::string> tokens;
   for (int i=0;i<asmCodes.size();i++) {
     tokens = spilt_asm_code(asmCodes[i]);
-
     if (tokens.empty()) continue;
     if (tokens[0] == ".text") break;
     if (dataStart) {
@@ -43,9 +43,6 @@ void Scanner::traverse_asm_codes() {
     if (tokens[0] == ".data") {
       dataStart = true;
       continue;
-    for (int j=0;j<tokens.size();j++) {
-      std::cout << tokens[j] << std::endl;
-    }
     }
   }
 }
@@ -137,8 +134,85 @@ bool Scanner::annotation_start(char currentChar) {
 }
 
 void Scanner::write_data_to_mem(std::vector<std::string> tokens) {
-  for (int i=0;i<tokens.size();i++) {
-    std::cout << tokens[i] << " ";
+  if (tokens[0] == ".ascii") {
+    for (int i=0;i<tokens[1].size();i+=4) {
+      int tmp = 0;
+      while (i+tmp<tokens[1].size() && tmp < 4) {
+        *((char *)data_ptr + tmp) = tokens[1][i+tmp];
+        tmp++;
+      }
+      data_ptr = (char *)data_ptr + 4;
+    }
   }
-  std::cout << std::endl;
+  if (tokens[0] == ".asciiz") {
+    tokens[1] = tokens[1] + '\0';
+    for (int i=0;i<tokens[1].size();i+=4) {
+      int tmp = 0;
+      while (i+tmp<tokens[1].size() && tmp < 4) {
+        *((char *)data_ptr + tmp) = tokens[1][i+tmp];
+        tmp++;
+      }
+      data_ptr = (char *)data_ptr + 4;
+    }
+  }
+  if (tokens[0] == ".word") {
+    std::string wordStr = "";
+    int wordInt;
+    for (int i=0;i<tokens[1].size();i++) {
+      if (tokens[1][i] == ',') {
+        wordInt = std::stoi(wordStr);
+        wordStr = "";
+        *(int *)data_ptr = wordInt;
+        data_ptr = ((char *)data_ptr) + 4;
+      }
+      else {
+        wordStr += tokens[1][i];
+        if (i == tokens[1].size()-1) {
+          wordInt = std::stoi(wordStr);
+          *(int *)data_ptr = wordInt;
+          data_ptr = ((char *)data_ptr) + 4;
+        }
+      }
+    }
+  }
+  if (tokens[0] == ".byte") {
+    std::string wordStr = "";
+    int wordInt;
+    for (int i=0;i<tokens[1].size();i++) {
+      if (tokens[1][i] == ',') {
+        wordInt = std::stoi(wordStr);
+        wordStr = "";
+        *(int *)data_ptr = wordInt;
+        data_ptr = ((char *)data_ptr) + 1;
+      }
+      else {
+        wordStr += tokens[1][i];
+        if (i == tokens[1].size()-1) {
+          wordInt = std::stoi(wordStr);
+          *(int *)data_ptr = wordInt;
+          data_ptr = ((char *)data_ptr) + 1;
+        }
+      }
+    }
+  }
+  if (tokens[0] == ".half") {
+    std::string wordStr = "";
+    int wordInt;
+    for (int i=0;i<tokens[1].size();i++) {
+      if (tokens[1][i] == ',') {
+        wordInt = std::stoi(wordStr);
+        wordStr = "";
+        *(int *)data_ptr = wordInt;
+        data_ptr = ((char *)data_ptr) + 2;
+      }
+      else {
+        wordStr += tokens[1][i];
+        if (i == tokens[1].size()-1) {
+          wordInt = std::stoi(wordStr);
+          *(int *)data_ptr = wordInt;
+          data_ptr = ((char *)data_ptr) + 2;
+        }
+      }
+    }
+  }
 }

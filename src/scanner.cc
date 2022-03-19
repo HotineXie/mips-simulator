@@ -1,4 +1,5 @@
 #include <iostream>
+#include <regex>
 #include "scanner.h"
 
 extern void *mem_ptr;
@@ -28,95 +29,96 @@ int Scanner::binstr_to_int(std::string binStr) {
 }
 
 void Scanner::traverse_asm_codes() {
-  bool data_start = false;
-  bool data_end = false;
+  bool dataStart = false;
+  bool dataEnd = false;
+  std::vector<std::string> tokens;
   for (int i=0;i<asmCodes.size();i++) {
-    std::vector<std::string> asmVec = spilt_asm_code(asmCodes[i]);
-    for (int j=0;j<asmVec.size();j++) {
-      std::cout << asmVec[j] << std::endl;
+    tokens = spilt_asm_code(asmCodes[i]);
+
+    if (tokens.empty()) continue;
+    if (tokens[0] == ".text") break;
+    if (dataStart) {
+      write_data_to_mem(tokens);
+    }
+    if (tokens[0] == ".data") {
+      dataStart = true;
+      continue;
+    for (int j=0;j<tokens.size();j++) {
+      std::cout << tokens[j] << std::endl;
+    }
     }
   }
 }
 
 std::vector<std::string> Scanner::spilt_asm_code(std::string currentLine) {
   std::vector<std::string> tokens;
-  std::string token = "";
-  bool typeStart = false;
-  bool typeEnd = false;
-  bool dataStart = false;
   for (int i=0;i<currentLine.size();i++) {
-    if (annotation_start(currentLine[i])) {
-      tokens.push_back(token);
+    if (currentLine[i] == '#') {
+      currentLine.erase(i);
       break;
-    } // meet #, break
-    if (!typeStart) {
-      if (currentLine[i] == '.') 
-        typeStart = true; 
-      else continue;
-    } // meet ., start to read datatype
-    if (typeStart && !typeEnd) {
+    }
+  }
+  for (int i=0;i<currentLine.size();i++) {
+    if (currentLine[i] == '.') {
+      currentLine.erase(0,i);
+      break;
+    }
+  }
+  if (!currentLine.empty()) {
+    currentLine.erase(0,currentLine.find_first_not_of("\t"));
+    currentLine.erase(0,currentLine.find_first_not_of(" "));
+    currentLine.erase(currentLine.find_last_not_of(" ")+1);
+    currentLine.erase(currentLine.find_last_not_of("\t")+1);
+  }
+
+  std::string::size_type pos = 0;
+  while ((pos=currentLine.find("\\n")) != std::string::npos) {
+    currentLine.replace(pos, 2, "\n");
+  }
+
+  std::string token = "";
+  bool readType = true;
+  bool readData = false;
+  for (int i=0;i<currentLine.size();i++) {
+    if (readType) {
+      if (i == currentLine.size()-1) {
+        token = token + currentLine[i];
+        tokens.push_back(token);
+        break;
+      }
       if (is_token_empty(currentLine[i])) {
-        typeEnd = true;
         tokens.push_back(token);
         token = "";
+        readType = false;
+      }
+      else token = token + currentLine[i];
+    }
+    else {
+      if (!readData) {
+        if (is_token_empty(currentLine[i])) continue;
+        else if (tokens[0] == ".word" || tokens[0] == ".byte" || tokens[0] == ".half") {
+          readData = true;
+          token = token + currentLine[i];
+        }
+        else readData = true;
       }
       else {
-        if (i == currentLine.size()-1) {
-          token = token + currentLine[i];
-          tokens.push_back(token);
-          continue;
-        }
-        else {
-          token = token + currentLine[i];
-          continue;
-        }
-      }
-    } // if datatype finished, put token to tokens and init token
-    if (typeEnd && !dataStart) {
-      if (is_token_empty(currentLine[i])) continue;
-      else {
-        if (tokens[0]==".word" || tokens[0]==".half" || tokens[0]==".byte") {
-          dataStart = true;
-          token = token + currentLine[i];
-        }
-        else {
-          dataStart = true;
-        }
-        continue;
-      }
-    } // when tokens[0] got, read until useful
-    if (dataStart) {
-      if (tokens[0]==".word" || tokens[0]==".half" || tokens[0]==".byte") {
-        if (i == currentLine.size()-1) {
-          if (is_token_empty(currentLine[i])) {
-            tokens.push_back(token);
-            break;
-          }
-          else {
+        if (tokens[0] == ".word" || tokens[0] == ".byte" || tokens[0] == ".half") {
+          if (i == currentLine.size()-1) {
             token = token + currentLine[i];
             tokens.push_back(token);
-            break;
           }
+          if (!is_token_empty(currentLine[i])) token = token + currentLine[i]; 
         }
         else {
-          if (is_token_empty(currentLine[i])) continue;
-          else {
-            token = token + currentLine[i];
+          if (currentLine[i] == '\"') {
+            tokens.push_back(token);
           }
-        }
-      }
-      else {
-        if (currentLine[i] == '\"') {
-          tokens.push_back(token);
-          break;
-        }
-        else {
-          token = token + currentLine[i];
+          else token = token + currentLine[i];
         }
       }
     }
   }
-
   return tokens;
 }
 
@@ -132,4 +134,11 @@ bool Scanner::annotation_start(char currentChar) {
     return true;
   }
   return false;
+}
+
+void Scanner::write_data_to_mem(std::vector<std::string> tokens) {
+  for (int i=0;i<tokens.size();i++) {
+    std::cout << tokens[i] << " ";
+  }
+  std::cout << std::endl;
 }

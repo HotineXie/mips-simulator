@@ -19,6 +19,8 @@ map
 /home/hotine/work/mips-simulator/src/scanner.cc
 iostream
 -
+regex
+-
 scanner.h
 /home/hotine/work/mips-simulator/src/scanner.h
 

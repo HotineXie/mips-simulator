@@ -74,12 +74,12 @@ clean: CMakeFiles/mips-simulator.dir/clean
 CMakeFiles/mips-simulator.dir/all:
 	$(MAKE) -f CMakeFiles/mips-simulator.dir/build.make CMakeFiles/mips-simulator.dir/depend
 	$(MAKE) -f CMakeFiles/mips-simulator.dir/build.make CMakeFiles/mips-simulator.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hotine/work/mips-simulator/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target mips-simulator"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hotine/work/mips-simulator/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target mips-simulator"
 .PHONY : CMakeFiles/mips-simulator.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mips-simulator.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hotine/work/mips-simulator/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hotine/work/mips-simulator/build/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mips-simulator.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/hotine/work/mips-simulator/build/CMakeFiles 0
 .PHONY : CMakeFiles/mips-simulator.dir/rule

@@ -1,13 +1,9 @@
 #include "scanner.h"
 #include "simulator.h"
-#include "memory.h"
+#include "mem_and_reg.h"
 
 #include <iostream>
 #include <fstream>
-
-extern void *mem_ptr;
-extern void *text_ptr;
-extern void *static_data_ptr;
 
 int main(int argc, char** argv) {
   std::string asmFilePath = argv[1];
@@ -24,6 +20,7 @@ int main(int argc, char** argv) {
 
   std::string currentLine;
   Scanner MipsScanner;
+  Simulator MipsSimulator;
 
   while (getline(asmCode, currentLine)) {
     MipsScanner.asmCodes.push_back(currentLine);
@@ -31,15 +28,17 @@ int main(int argc, char** argv) {
   while (getline(binCode, currentLine)) {
     MipsScanner.binCodes.push_back(currentLine);
   }
+  while (getline(checkPoint, currentLine)) {
+    MipsSimulator.checkoutPoints.push_back(std::stoi(currentLine));
+  }
+  while (getline(ioIn, currentLine)) {
+    MipsSimulator.readInfos.push_back(currentLine);
+  }
+
   MipsScanner.traverse_bin_codes();
   MipsScanner.traverse_asm_codes();
 
-  // test dump
-  FILE *fp = fopen("dump", "wb");
-  fwrite(mem_ptr, 1, 0x600000, fp);
-  fclose(fp);
-  // std::cout << mem_ptr << std::endl;
-  // std::cout << static_data_ptr << std::endl;
-  // std::cout << *(int *)static_data_ptr << std::endl; 
+  MipsSimulator.init_regs();
+  MipsSimulator.exec_bin_code();
   return 0;
 }

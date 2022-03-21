@@ -83,22 +83,9 @@ CMakeFiles/mips-simulator.dir/src/scanner.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mips-simulator.dir/src/scanner.cc.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hotine/work/mips-simulator/src/scanner.cc -o CMakeFiles/mips-simulator.dir/src/scanner.cc.s
 
-CMakeFiles/mips-simulator.dir/src/dump.cc.o: CMakeFiles/mips-simulator.dir/flags.make
-CMakeFiles/mips-simulator.dir/src/dump.cc.o: ../src/dump.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hotine/work/mips-simulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/mips-simulator.dir/src/dump.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mips-simulator.dir/src/dump.cc.o -c /home/hotine/work/mips-simulator/src/dump.cc
-
-CMakeFiles/mips-simulator.dir/src/dump.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mips-simulator.dir/src/dump.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hotine/work/mips-simulator/src/dump.cc > CMakeFiles/mips-simulator.dir/src/dump.cc.i
-
-CMakeFiles/mips-simulator.dir/src/dump.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mips-simulator.dir/src/dump.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hotine/work/mips-simulator/src/dump.cc -o CMakeFiles/mips-simulator.dir/src/dump.cc.s
-
 CMakeFiles/mips-simulator.dir/src/simulator.cc.o: CMakeFiles/mips-simulator.dir/flags.make
 CMakeFiles/mips-simulator.dir/src/simulator.cc.o: ../src/simulator.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hotine/work/mips-simulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/mips-simulator.dir/src/simulator.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hotine/work/mips-simulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/mips-simulator.dir/src/simulator.cc.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mips-simulator.dir/src/simulator.cc.o -c /home/hotine/work/mips-simulator/src/simulator.cc
 
 CMakeFiles/mips-simulator.dir/src/simulator.cc.i: cmake_force
@@ -109,23 +96,51 @@ CMakeFiles/mips-simulator.dir/src/simulator.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mips-simulator.dir/src/simulator.cc.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hotine/work/mips-simulator/src/simulator.cc -o CMakeFiles/mips-simulator.dir/src/simulator.cc.s
 
+CMakeFiles/mips-simulator.dir/src/mem_and_reg.cc.o: CMakeFiles/mips-simulator.dir/flags.make
+CMakeFiles/mips-simulator.dir/src/mem_and_reg.cc.o: ../src/mem_and_reg.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hotine/work/mips-simulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/mips-simulator.dir/src/mem_and_reg.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mips-simulator.dir/src/mem_and_reg.cc.o -c /home/hotine/work/mips-simulator/src/mem_and_reg.cc
+
+CMakeFiles/mips-simulator.dir/src/mem_and_reg.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mips-simulator.dir/src/mem_and_reg.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hotine/work/mips-simulator/src/mem_and_reg.cc > CMakeFiles/mips-simulator.dir/src/mem_and_reg.cc.i
+
+CMakeFiles/mips-simulator.dir/src/mem_and_reg.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mips-simulator.dir/src/mem_and_reg.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hotine/work/mips-simulator/src/mem_and_reg.cc -o CMakeFiles/mips-simulator.dir/src/mem_and_reg.cc.s
+
+CMakeFiles/mips-simulator.dir/src/instructions.cc.o: CMakeFiles/mips-simulator.dir/flags.make
+CMakeFiles/mips-simulator.dir/src/instructions.cc.o: ../src/instructions.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hotine/work/mips-simulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/mips-simulator.dir/src/instructions.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mips-simulator.dir/src/instructions.cc.o -c /home/hotine/work/mips-simulator/src/instructions.cc
+
+CMakeFiles/mips-simulator.dir/src/instructions.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mips-simulator.dir/src/instructions.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hotine/work/mips-simulator/src/instructions.cc > CMakeFiles/mips-simulator.dir/src/instructions.cc.i
+
+CMakeFiles/mips-simulator.dir/src/instructions.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mips-simulator.dir/src/instructions.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hotine/work/mips-simulator/src/instructions.cc -o CMakeFiles/mips-simulator.dir/src/instructions.cc.s
+
 # Object files for target mips-simulator
 mips__simulator_OBJECTS = \
 "CMakeFiles/mips-simulator.dir/src/main.cc.o" \
 "CMakeFiles/mips-simulator.dir/src/scanner.cc.o" \
-"CMakeFiles/mips-simulator.dir/src/dump.cc.o" \
-"CMakeFiles/mips-simulator.dir/src/simulator.cc.o"
+"CMakeFiles/mips-simulator.dir/src/simulator.cc.o" \
+"CMakeFiles/mips-simulator.dir/src/mem_and_reg.cc.o" \
+"CMakeFiles/mips-simulator.dir/src/instructions.cc.o"
 
 # External object files for target mips-simulator
 mips__simulator_EXTERNAL_OBJECTS =
 
 mips-simulator: CMakeFiles/mips-simulator.dir/src/main.cc.o
 mips-simulator: CMakeFiles/mips-simulator.dir/src/scanner.cc.o
-mips-simulator: CMakeFiles/mips-simulator.dir/src/dump.cc.o
 mips-simulator: CMakeFiles/mips-simulator.dir/src/simulator.cc.o
+mips-simulator: CMakeFiles/mips-simulator.dir/src/mem_and_reg.cc.o
+mips-simulator: CMakeFiles/mips-simulator.dir/src/instructions.cc.o
 mips-simulator: CMakeFiles/mips-simulator.dir/build.make
 mips-simulator: CMakeFiles/mips-simulator.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hotine/work/mips-simulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable mips-simulator"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hotine/work/mips-simulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable mips-simulator"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mips-simulator.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -1,17 +1,10 @@
 #include <iostream>
-#include <regex>
 #include "scanner.h"
-
-extern void *mem_ptr;
-extern void *text_ptr;
-extern void *static_data_ptr;
-extern void *data_ptr;
 
 void Scanner::traverse_bin_codes() {
   for (int i=0;i<binCodes.size();i++) {
     write_bin_to_mem(binCodes[i]);
   }
-  text_ptr = mem_ptr;  // reset text_ptr addr
 }
 
 void Scanner::write_bin_to_mem(std::string binCode) {

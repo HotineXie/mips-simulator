@@ -123,32 +123,32 @@ mips-simulator/fast:
 	$(MAKE) -f CMakeFiles/mips-simulator.dir/build.make CMakeFiles/mips-simulator.dir/build
 .PHONY : mips-simulator/fast
 
-src/dump.o: src/dump.cc.o
+src/instructions.o: src/instructions.cc.o
 
-.PHONY : src/dump.o
+.PHONY : src/instructions.o
 
 # target to build an object file
-src/dump.cc.o:
-	$(MAKE) -f CMakeFiles/mips-simulator.dir/build.make CMakeFiles/mips-simulator.dir/src/dump.cc.o
-.PHONY : src/dump.cc.o
+src/instructions.cc.o:
+	$(MAKE) -f CMakeFiles/mips-simulator.dir/build.make CMakeFiles/mips-simulator.dir/src/instructions.cc.o
+.PHONY : src/instructions.cc.o
 
-src/dump.i: src/dump.cc.i
+src/instructions.i: src/instructions.cc.i
 
-.PHONY : src/dump.i
+.PHONY : src/instructions.i
 
 # target to preprocess a source file
-src/dump.cc.i:
-	$(MAKE) -f CMakeFiles/mips-simulator.dir/build.make CMakeFiles/mips-simulator.dir/src/dump.cc.i
-.PHONY : src/dump.cc.i
+src/instructions.cc.i:
+	$(MAKE) -f CMakeFiles/mips-simulator.dir/build.make CMakeFiles/mips-simulator.dir/src/instructions.cc.i
+.PHONY : src/instructions.cc.i
 
-src/dump.s: src/dump.cc.s
+src/instructions.s: src/instructions.cc.s
 
-.PHONY : src/dump.s
+.PHONY : src/instructions.s
 
 # target to generate assembly for a file
-src/dump.cc.s:
-	$(MAKE) -f CMakeFiles/mips-simulator.dir/build.make CMakeFiles/mips-simulator.dir/src/dump.cc.s
-.PHONY : src/dump.cc.s
+src/instructions.cc.s:
+	$(MAKE) -f CMakeFiles/mips-simulator.dir/build.make CMakeFiles/mips-simulator.dir/src/instructions.cc.s
+.PHONY : src/instructions.cc.s
 
 src/main.o: src/main.cc.o
 
@@ -176,6 +176,33 @@ src/main.s: src/main.cc.s
 src/main.cc.s:
 	$(MAKE) -f CMakeFiles/mips-simulator.dir/build.make CMakeFiles/mips-simulator.dir/src/main.cc.s
 .PHONY : src/main.cc.s
+
+src/mem_and_reg.o: src/mem_and_reg.cc.o
+
+.PHONY : src/mem_and_reg.o
+
+# target to build an object file
+src/mem_and_reg.cc.o:
+	$(MAKE) -f CMakeFiles/mips-simulator.dir/build.make CMakeFiles/mips-simulator.dir/src/mem_and_reg.cc.o
+.PHONY : src/mem_and_reg.cc.o
+
+src/mem_and_reg.i: src/mem_and_reg.cc.i
+
+.PHONY : src/mem_and_reg.i
+
+# target to preprocess a source file
+src/mem_and_reg.cc.i:
+	$(MAKE) -f CMakeFiles/mips-simulator.dir/build.make CMakeFiles/mips-simulator.dir/src/mem_and_reg.cc.i
+.PHONY : src/mem_and_reg.cc.i
+
+src/mem_and_reg.s: src/mem_and_reg.cc.s
+
+.PHONY : src/mem_and_reg.s
+
+# target to generate assembly for a file
+src/mem_and_reg.cc.s:
+	$(MAKE) -f CMakeFiles/mips-simulator.dir/build.make CMakeFiles/mips-simulator.dir/src/mem_and_reg.cc.s
+.PHONY : src/mem_and_reg.cc.s
 
 src/scanner.o: src/scanner.cc.o
 
@@ -240,12 +267,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... mips-simulator"
-	@echo "... src/dump.o"
-	@echo "... src/dump.i"
-	@echo "... src/dump.s"
+	@echo "... src/instructions.o"
+	@echo "... src/instructions.i"
+	@echo "... src/instructions.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/mem_and_reg.o"
+	@echo "... src/mem_and_reg.i"
+	@echo "... src/mem_and_reg.s"
 	@echo "... src/scanner.o"
 	@echo "... src/scanner.i"
 	@echo "... src/scanner.s"

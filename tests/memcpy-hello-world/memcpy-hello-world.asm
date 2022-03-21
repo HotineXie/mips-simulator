@@ -22,7 +22,7 @@ LENGTH: .word 13
 	addi $v0, $zero, 10
 	syscall 
 __builtin_memcpy_aligned_large:
-   	addi   $t7, $a2, -4
+  addi   $t7, $a2, -4
 	blez  $t7, __builtin_memcpy_bytes
 	lw    $t0, 0($a1)
 	sw    $t0, 0($a0)

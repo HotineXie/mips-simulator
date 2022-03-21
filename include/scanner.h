@@ -1,7 +1,9 @@
+#ifndef SCANNER_H
+#define SCANNER_H
 #include <vector>
-#include <fstream>
 #include <string>
 #include <map>
+#include "mem_and_reg.h"
 
 class Scanner {
  public:
@@ -21,3 +23,5 @@ class Scanner {
   bool annotation_start(char currentChar);
   void write_data_to_mem(std::vector<std::string> tokens);
 };
+
+#endif

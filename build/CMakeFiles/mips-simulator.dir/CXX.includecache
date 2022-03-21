@@ -6,21 +6,47 @@
 
 #IncludeRegexTransform: 
 
-../include/scanner.h
-vector
+../include/instructions.h
+iostream
+-
+cstring
 -
 fstream
+-
+sys/types.h
+-
+sys/stat.h
+-
+fcntl.h
+-
+unistd.h
+-
+
+../include/mem_and_reg.h
+iostream
+-
+
+../include/simulator.h
+vector
 -
 string
 -
 map
 -
+mem_and_reg.h
+../include/mem_and_reg.h
 
-/home/hotine/work/mips-simulator/src/scanner.cc
+/home/hotine/work/mips-simulator/src/instructions.cc
+instructions.h
+/home/hotine/work/mips-simulator/src/instructions.h
+
+/home/hotine/work/mips-simulator/src/simulator.cc
 iostream
 -
-regex
+algorithm
 -
-scanner.h
-/home/hotine/work/mips-simulator/src/scanner.h
+simulator.h
+/home/hotine/work/mips-simulator/src/simulator.h
+instructions.h
+/home/hotine/work/mips-simulator/src/instructions.h
 

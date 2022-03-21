@@ -11,7 +11,7 @@ class Simulator {
   void exec_bin_code();
   std::vector<int> checkoutPoints;
   std::vector<std::string> readInfos;
-  std::vector<std::string> printInfos;
+  FILE *outFile;
 
  private:
   std::string dec_to_bin(unsigned int dec);

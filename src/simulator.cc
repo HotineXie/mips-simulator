@@ -297,24 +297,31 @@ int Simulator::binstr_to_int(std::string binStr) {
   return result;
 }
 
-
 void Simulator::syscall_instr(char* mem, int* v0, int* a0, int* a1, int* a2, void* data_ptr) {
   if (*v0 == 1) {
-    std::cout << *a0;
+    fprintf(outFile, "%d", *a0);
+    // printInfos.push_back(std::to_string(*a0));
     return;
   }
   if (*v0 == 4) {
     int real_addr = *a0 - 0x400000;
-    std::cout << mem + real_addr;
+    char *temp = mem + real_addr;
+    fwrite(temp, std::strlen(temp), 1, outFile);
+    // printInfos.push_back(temp);
     return;
   }
   if (*v0 == 5) {
-    std::cin >> *v0;
+    *v0 = std::stoi(readInfos[0]);
+    for (int i=0;i<readInfos.size()-1;i++) {
+      readInfos[i] = readInfos[i+1];
+    }
     return;
   }
   if (*v0 == 8) {
     int real_addr = *a0 - 0x400000;
-    std::cin.get(mem + real_addr, *a1);
+    char temp[readInfos[0].size()];
+    strcpy(temp, readInfos[0].c_str());
+    memcpy(mem + real_addr, temp, *a1);
     return;
   }
   if (*v0 == 9)
@@ -328,13 +335,16 @@ void Simulator::syscall_instr(char* mem, int* v0, int* a0, int* a1, int* a2, voi
   }
   if (*v0 == 11) {
     char temp = *a0;
-    std::cout << temp;
+    fprintf(outFile, "%c", *a0);
+    // fwrite(temp, sizeof(*temp), 1, outFile);
+    // printInfos.push_back(std::to_string(temp));
     return;
   }
   if (*v0 == 12) {
-    char temp;
-    std::cin >> temp;
-    *v0 = temp;
+    *(char *)v0 = readInfos[0][0];
+    for (int i=0;i<readInfos.size()-1;i++) {
+      readInfos[i] = readInfos[i+1];
+    }
     return;
   }
   if (*v0 == 13) {

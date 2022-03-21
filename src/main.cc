@@ -16,7 +16,8 @@ int main(int argc, char** argv) {
   std::ifstream binCode(binFilePath);
   std::ifstream checkPoint(checkpointFilePath);
   std::ifstream ioIn(ioInFilePath);
-  std::ofstream ioOut(ioOutFilePath, std::ios::trunc);
+  // std::ofstream ioOut(ioOutFilePath, std::ios::trunc);
+  FILE *outFile = fopen(ioOutFilePath.c_str(), "w");
 
   std::string currentLine;
   Scanner MipsScanner;
@@ -34,11 +35,13 @@ int main(int argc, char** argv) {
   while (getline(ioIn, currentLine)) {
     MipsSimulator.readInfos.push_back(currentLine);
   }
+  MipsSimulator.outFile = outFile;
 
   MipsScanner.traverse_bin_codes();
   MipsScanner.traverse_asm_codes();
 
   MipsSimulator.init_regs();
   MipsSimulator.exec_bin_code();
+
   return 0;
 }

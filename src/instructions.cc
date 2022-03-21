@@ -221,21 +221,18 @@ void slti(int* rs, int* rt, int immediate)
     *rt = *rs < immediate;
 }
 
-void sltiu(int* rs, int* rt, int immediate)
-{
+void sltiu(int* rs, int* rt, int immediate) {
     *rt = (unsigned(*rs) < unsigned(immediate));
 }
 
-void beq(int* pc, int* rs, int* rt, int immediate)
-{
+void beq(int* pc, int* rs, int* rt, int immediate) {
     if (*rs == *rt)
     {
         *pc += immediate << 2;
     }
 }
 
-void bgez(int* pc, int* rs, int immediate)
-{
+void bgez(int* pc, int* rs, int immediate) {
     if (*rs >= 0)
     {
         *pc += immediate << 2;
@@ -258,14 +255,11 @@ void bgtz(int* pc, int* rs, int immediate)
     }
 }
 
-void blez(int* pc, int* rs, int immediate)
-{
-    // std::cout << *pc << std::endl;
+void blez(int* pc, int* rs, int immediate) {
     if (*rs <= 0)
     {
         *pc += immediate << 2;
     }
-    // std::cout << *pc << std::endl;
 }
 
 void bltz(int* pc, int* rs, int immediate)
